@@ -13,15 +13,29 @@ class MoviesController < ApplicationController
     end
 
     def create
+        @movie = Movie.new(movie_params)
+
+        if @movie.save
+            redirect_to movie_path(@movie)
+        else
+            render 'new'
+        end
     end
 
     def edit
     end
 
     def update
+        if @movie.save
+            redirect_to movie_path(@movie)
+        else
+            render 'new'
+        end
     end
 
     def destroy
+        @movie.destroy
+        redirect_to root_path
     end
 
     private
