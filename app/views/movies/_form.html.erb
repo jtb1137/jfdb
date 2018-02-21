@@ -1,0 +1,9 @@
+<%= form_for @movie do |f| %>
+    <%= f.label :title %>
+    <%= f.text_area :title %><br>
+    <%= f.label :synopsis %>
+    <%= f.text_area :synopsis %><br>
+    <%= f.label :mpaa_rating %>
+    <%= f.text_area :mpaa_rating%><br>
+    <%= f.submit %>
+<% end %>
