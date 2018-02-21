@@ -1,9 +1,9 @@
 <%= form_for @movie do |f| %>
     <%= f.label :title %>
-    <%= f.text_area :title %><br>
+    <%= f.text_field :title %><br>
     <%= f.label :synopsis %>
     <%= f.text_area :synopsis %><br>
     <%= f.label :mpaa_rating %>
-    <%= f.text_area :mpaa_rating%><br>
+    <%= select(:movie, :mpaa_rating, options_for_select([ 'G', 'PG', 'PG-13', 'R' ]), { include_blank: true }) %><br>
     <%= f.submit %>
 <% end %>
