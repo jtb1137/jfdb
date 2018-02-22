@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221212904) do
-
-  create_table "list_movies", force: :cascade do |t|
-    t.integer "list_id"
-    t.integer "movie_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20180221210852) do
 
   create_table "lists", force: :cascade do |t|
     t.string "name"
