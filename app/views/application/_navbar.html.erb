@@ -4,15 +4,16 @@
             <%= link_to "Home", root_path, class: "nav-link active" %>
         </li>
 
-        <li class="nav-item">
-            <%= link_to "New Movie", new_movie_path, class: "nav-link" %>
-        </li>
-
-        <li class="nav-item">
-            <%= link_to "New List", new_list_path, class: "nav-link" %>
-        </li>
-
         <% if user_signed_in? %>
+
+            <li class="nav-item">
+                <%= link_to "New Movie", new_movie_path, class: "nav-link" %>
+            </li>
+
+            <li class="nav-item">
+                <%= link_to "New List", new_list_path, class: "nav-link" %>
+            </li>
+
             <li class="nav-item">
                 <!--
                  Need to make a user page and link to it
