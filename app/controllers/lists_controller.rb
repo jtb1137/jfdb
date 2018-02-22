@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
     before_action :set_list, only: [:show, :edit, :update, :destroy]
+    before_action :security_check, only: [:edit, :update, :destroy]
 
     def index
         @lists = List.all
@@ -14,6 +15,7 @@ class ListsController < ApplicationController
 
     def create
         @list = List.new(list_params)
+        @list.user_id = current_user.id
 
         if @list.save
             redirect_to list_path(@list)
@@ -48,5 +50,11 @@ class ListsController < ApplicationController
 
     def set_list
         @list = List.find(params[:id])
+    end
+
+    def security_check
+        if current_user.id != @list.user_id
+            redirect_to root_path
+        end
     end
 end

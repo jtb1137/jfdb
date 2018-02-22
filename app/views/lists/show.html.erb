@@ -1,5 +1,9 @@
 <p><%= @list.name %></p>
 <p><%= @list.description %></p>
 
-<%= link_to "Edit", edit_list_path(@list) %>
-<%= link_to "Delete", list_path(@list), method: :delete %>
+<% if user_signed_in? %>
+    <% if current_user.id == @list.user_id %>
+        <%= link_to "Edit", edit_list_path(@list) %>
+        <%= link_to "Delete", list_path(@list), method: :delete %>
+    <% end %>
+<% end %>
