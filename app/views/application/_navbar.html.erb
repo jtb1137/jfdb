@@ -11,7 +11,11 @@
             </li>
 
             <li class="nav-item">
-                <%= link_to "New List", new_user_list_path(@user), class: "nav-link" %>
+                <%= link_to "New List", new_user_list_path(current_user), class: "nav-link" %>
+            </li>
+
+            <li class="nav-item">
+                <%= link_to "My Lists", user_lists_path(current_user), class: "nav-link" %>
             </li>
 
             <li class="nav-item">

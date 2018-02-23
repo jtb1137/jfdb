@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
     def index
         @movies = Movie.all
         @lists = List.all
-        @user = current_user.id
+        @user = User.find_by_id(params[:user_id])
     end
 
     def show
