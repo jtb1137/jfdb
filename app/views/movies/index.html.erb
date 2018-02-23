@@ -15,7 +15,7 @@
             
             <ul class="list-group">
                 <% @lists.each do |list| %>
-                    <li class="list-group-item"><%= link_to list.name, list_path(list) %></li>
+                    <li class="list-group-item"><%= link_to list.name, user_list_path(@user, list.user_id) %></li>
                 <% end %>
             </ul>
         </div>
