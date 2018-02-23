@@ -1,9 +1,10 @@
 <nav class="navbar navbar-expand-lg bg-light">
-    <ul class="nav">
+    <ul class="navbar-nav mr-auto">
         <li class="nav-item">
             <%= link_to "Home", root_path, class: "nav-link active" %>
         </li>
-
+    </ul>
+    <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
 
             <li class="nav-item">
