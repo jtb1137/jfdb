@@ -1,24 +1,22 @@
 class ListsController < ApplicationController
     before_action :set_list, only: [:edit, :update, :destroy]
     before_action :security_check, only: [:edit, :update, :destroy]
+    before_action :set_user, only: [:index, :show]
+    before_action :set_current_user, only: [:new, :create, :edit, :update, :destroy]
 
     def index
-        @user = current_user
-        @lists = @user.lists.all
+        @lists = List.all
     end
 
     def show
-        @user = current_user
         @list = @user.lists.find(params[:id])
     end
 
     def new
-        @user = current_user
         @list = @user.lists.build
     end
 
     def create
-        @user = current_user
         @list = @user.lists.build(list_params)
         @list.user_id = current_user.id
 
@@ -30,11 +28,9 @@ class ListsController < ApplicationController
     end
 
     def edit
-        @user = current_user
     end
 
     def update
-        @user = current_user
         @list.update(list_params)
 
         if @list.save
@@ -45,7 +41,6 @@ class ListsController < ApplicationController
     end
 
     def destroy
-        @user = current_user
         @list.destroy
         redirect_to user_lists_path
     end
@@ -58,6 +53,14 @@ class ListsController < ApplicationController
 
     def set_list
         @list = List.find(params[:id])
+    end
+
+    def set_current_user
+        @user = current_user
+    end
+
+    def set_user
+        @user = User.find(params[:user_id])
     end
 
     def security_check
