@@ -1,6 +1,5 @@
 class MoviesController < ApplicationController
     before_action :set_movie, only: [:show, :edit, :update, :destroy]
-    before_action :set_user
 
     def index
         @movies = Movie.all
@@ -51,9 +50,5 @@ class MoviesController < ApplicationController
 
     def set_movie
         @movie = Movie.find(params[:id])
-    end
-
-    def set_user
-        @user = current_user.id
     end
 end
