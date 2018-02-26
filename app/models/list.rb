@@ -6,4 +6,12 @@ class List < ApplicationRecord
     
     has_many :selections
     has_many :movies, through: :selections
+    accepts_nested_attributes_for :movies
+
+    def movies_attributers=(mvoies_attributes)
+        movies_attributes.values.each do |movie_attribute|
+            movie = Movie.find_or_create_by(movie_attribute)
+            self.movies << movie
+        end
+    end
 end

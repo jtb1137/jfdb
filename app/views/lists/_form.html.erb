@@ -8,5 +8,35 @@
         <%= f.label :description %>
         <%= f.text_area :description, class: "form-control" %>
     </div>
+
+    <div class="form-group">
+        <%= f.collection_select(:movie_ids, Movie.all, :id, :title, { include_blank: true }) %>
+    </div>
+
+    <div class="form-group">
+        <%= f.fields_for :movies, @list.movies.build do |movie_fields| %>
+
+            <div class="form-group">
+                <%= movie_fields.label :title %>
+                <%= movie_fields.text_field :title, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+                <%= movie_fields.label :synopsis %>
+                <%= movie_fields.text_area :synopsis, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+                <%= movie_fields.label :mpaa_rating %>
+                <%= select(:movie, :mpaa_rating, options_for_select([ 'G', 'PG', 'PG-13', 'R' ]), { include_blank: true }) %>
+            </div>
+
+            <div class="form-group">
+                <%= movie_fields.label :release_date %>
+                <%= date_select("movie", "release_date", start_year: 1900, order: [:day, :month, :year])%>
+            </div>
+        <% end %>
+    </div>
+
     <%= f.submit class: "btn btn-primary" %>
 <% end %>
